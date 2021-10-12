@@ -13,12 +13,10 @@ public:
 
    static string convertIntToString(int number);
    static int convertStringToInt(string number);
+   static string convertFloatToString (float number);
    static string loadLine();
    static char loadChar();
    static int loadNumber();
    static string changeFirstLetterToCapitalRestToSmall(string text);
-   static void changeFileName(string oldNAme,string newName);
-   static void deleteFile(string fileName);
-
 };
 #endif

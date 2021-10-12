@@ -43,6 +43,3 @@ string AuxillaryMethodes::changeFirstLetterToCapitalRestToSmall(string text) {
     return text;
 }
 
-void AuxillaryMethodes::changeFileName(string oldName,string newName) {
-    rename(oldName.c_str(),newName.c_str());
-}
