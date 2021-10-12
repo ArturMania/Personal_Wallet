@@ -24,7 +24,8 @@ public:
     static string changeDayToString(int day);
     static string changeDateToString(int year,int month,int day);
     static int changeDateToInt(string date);
-    static bool isItLeapYear(int year);
+    bool checkEarlierDate(int fisrtDate,int secondDate);
+
 };
 
 
