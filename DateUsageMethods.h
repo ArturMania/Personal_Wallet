@@ -19,12 +19,14 @@ public:
     int getCurrentDay();
     int getCurrentMonth();
     int getCurrentYear();
+    int howManyDaysHaveMonth(int month,int year);
     string changeYearToString(int year);
     string changeMonthToString(int month);
     string changeDayToString(int day);
     string changeDateToString(int year,int month,int day);
     int changeDateToInt(string date);
     bool checkEarlierDate(int fisrtDate,int secondDate);
+    bool isItLeapYear(int year);
 
 };
 

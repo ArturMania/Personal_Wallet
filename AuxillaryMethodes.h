@@ -17,6 +17,6 @@ public:
    static string loadLine();
    static char loadChar();
    static int loadNumber();
-   static string changeFirstLetterToCapitalRestToSmall(string text);
+   static string replaceCommaWithDot(string numberAsString);
 };
 #endif

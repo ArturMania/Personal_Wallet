@@ -16,10 +16,12 @@ int main() {
     int cday=data.getCurrentDay();
     date2=data.changeDateToString(cyear,cmonth,cday);
     dateInt2=data.changeDateToInt(date2);
+    int days = data.howManyDaysHaveMonth(month,year);
 
     cout << "Hello world!" << endl;
     cout<<"Your date: "<<year<<"."<<month<<"."<<day<<endl;
     cout<<"Today is: "<<cyear<<"."<<cmonth<<"."<<cday<<endl;
+    cout<<"Number od days in month: "<<days<<endl;
     cout<<date<<endl;
     cout<<dateInt<<endl;
     data.checkEarlierDate(dateInt,dateInt2);

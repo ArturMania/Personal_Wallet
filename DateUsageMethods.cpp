@@ -42,6 +42,21 @@ int DateUsageMethodes::getCurrentDay() {
     return currentDay;
 }
 
+int DateUsageMethodes::howManyDaysHaveMonth(int month,int year) {
+    int days=0;
+    if((month==4)||(month==6)||(month==9)||(month==11)) {
+        days=30;
+    } else if(month==2) {
+        if(isItLeapYear(year)==true)
+            days=29;
+        else
+            days=28;
+    } else {
+        days=31;
+    }
+    return days;
+}
+
 string DateUsageMethodes::changeYearToString(int year) {
     string yearAsString = AuxillaryMethodes::convertIntToString(year);
     return yearAsString;
@@ -81,4 +96,8 @@ bool DateUsageMethodes::checkEarlierDate(int firstDate, int secondDate) {
         cout<<"First Date is earlier."<<endl;
     else
         cout<<"Second Date is earlier "<<endl;
+}
+
+bool DateUsageMethodes::isItLeapYear(int year) {
+    return((year%4==0 && year%100!=0)||(year%400==0));
 }
