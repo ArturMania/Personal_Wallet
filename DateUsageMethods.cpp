@@ -76,6 +76,24 @@ string DateUsageMethodes::changeDayToString(int day) {
     return dayAsString;
 }
 
+string DateUsageMethodes::changeDateWithDashesToString(string dateDashedString) {
+    string year="",month="",day="",date="";
+    year=dateDashedString.substr(0,4);
+    int yearInt=AuxillaryMethodes::convertStringToInt(year);
+    isYearCorrect(yearInt);
+    month=dateDashedString.substr(5,2);
+    int monthInt=AuxillaryMethodes::convertStringToInt(month);
+    isMonthCorrect(monthInt);
+    day=dateDashedString.substr(8,2);
+    int dayInt=AuxillaryMethodes::convertStringToInt(day);
+    isDayCorrect(dayInt);
+    string yearStr=changeYearToString(yearInt);
+    string monthStr=changeMonthToString(monthInt);
+    string dayStr=changeDayToString(dayInt);
+
+    date=yearStr+monthStr+dayStr;
+    return date;
+}
 string DateUsageMethodes::changeDateToString(int year,int month,int day) {
     string dateAsString="";
     string yearAsString=changeYearToString(year);
@@ -101,3 +119,34 @@ bool DateUsageMethodes::checkEarlierDate(int firstDate, int secondDate) {
 bool DateUsageMethodes::isItLeapYear(int year) {
     return((year%4==0 && year%100!=0)||(year%400==0));
 }
+
+bool DateUsageMethodes::isYearCorrect(int year) {
+    time_t now =time(&now);
+    struct tm*dt =localtime(&now);
+    int currentYear =(dt->tm_year+1900);
+    if((year>=2000)&&(year<=currentYear))
+        return year;
+    else {
+        cout<<"Wrong year input!"<<endl;
+        return 0;
+    }
+}
+
+bool DateUsageMethodes::isMonthCorrect(int month) {
+    if((month>=1)&&(month<=12))
+        return month;
+    else {
+        cout<<"Wrong month input!"<<endl;
+        return 0;
+    }
+}
+
+bool DateUsageMethodes::isDayCorrect(int day) {
+    if (day<=31)
+        return day;
+    else {
+        cout<<"Wrong day input!"<<endl;
+        return 0;
+    }
+}
+
