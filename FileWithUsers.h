@@ -15,7 +15,6 @@ using namespace std;
 
 class FileWithUsers {
 
-    int loggedUserId();
     vector<User>users;
     const string FILE_WITH_USERS;
     string getNameOfFielWithUsers();
@@ -27,6 +26,7 @@ public:
 
     void addUserToFile(User user);
     vector<User> loadUsersFromFile();
+    void passwordChange(int loggedUSerId,string newPassword);
 
 };
 #endif
