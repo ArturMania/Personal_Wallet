@@ -24,9 +24,13 @@ public:
     string changeMonthToString(int month);
     string changeDayToString(int day);
     string changeDateToString(int year,int month,int day);
+    string changeDateWithDashesToString(string dateDashedString);
     int changeDateToInt(string date);
     bool checkEarlierDate(int fisrtDate,int secondDate);
     bool isItLeapYear(int year);
+    bool isYearCorrect(int year);
+    bool isMonthCorrect(int month);
+    bool isDayCorrect(int day);
 
 };
 
