@@ -1,10 +1,23 @@
 #include <iostream>
 #include "DateUsageMethods.h"
+#include "UserManager.h"
+
 using namespace std;
 
 int main() {
     DateUsageMethodes data;
-    string date="",date2="";
+    UserManager userManager("Users.xml");
+
+
+    userManager.userRegistration();
+    userManager.userLogIn();
+    userManager.loggedUserPasswordChange();
+
+
+
+
+
+    /*string date="",date2="";
     cout<<"Write down date in this format: yyyy-mm-dd "<<endl;
     string dateDashedString=AuxillaryMethodes::loadLine();
     //string dateDashedString="1993-04-11";
@@ -17,7 +30,7 @@ int main() {
     int month =data.getMonth();
     int day = data.getDay();
     date=data.changeDateToString(year,month,day);*/
-    dateInt=data.changeDateToInt(date);
+    /*dateInt=data.changeDateToInt(date);
     int cyear=data.getCurrentYear();
     int cmonth=data.getCurrentMonth();
     int cday=data.getCurrentDay();
@@ -32,7 +45,8 @@ int main() {
     //cout<<date<<endl;
     //cout<<date2<<endl;
     //cout<<dateInt<<endl;
-    //data.checkEarlierDate(dateInt,dateInt2);
+    //data.checkEarlierDate(dateInt,dateInt2);*/
+
     return 0;
 }
 

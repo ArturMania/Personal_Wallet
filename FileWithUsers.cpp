@@ -6,7 +6,7 @@ string FileWithUsers::getNameOfFielWithUsers() {
 
 void FileWithUsers::addUserToFile(User user) {
     CMarkup xml;
-    bool fileExists = xml.Load("Users.xml");
+    bool fileExists = xml.Load(getNameOfFielWithUsers());
     if(!fileExists) {
         xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
         xml.AddElem("Users");
@@ -19,18 +19,16 @@ void FileWithUsers::addUserToFile(User user) {
     xml.AddElem("Login",user.getLogin());
     xml.AddElem("Password",user.getPassword());
     xml.AddElem("Name",user.getName());
-    xml.AddElem("Password",user.getPassword());
+    xml.AddElem("Surname",user.getSurname());
 
-    xml.Save("users.xml");
-    cout<<"Users has been added succesfuly to a File."<<endl;
-    system("cls");
+    xml.Save(getNameOfFielWithUsers());
 }
 
 vector<User>FileWithUsers::loadUsersFromFile() {
     CMarkup xml;
     User user;
     vector<User>users;
-    bool fileExists = xml.Load("Users.xml");
+    bool fileExists = xml.Load(getNameOfFielWithUsers());
     if(fileExists) {
         xml.FindElem("Users");
         xml.IntoElem();
@@ -51,4 +49,24 @@ vector<User>FileWithUsers::loadUsersFromFile() {
         }
     }
     return users;
+}
+
+void FileWithUsers::passwordChange(int loggedUserId, string newPassword) {
+    CMarkup xml;
+    bool fileExists = xml.Load(getNameOfFielWithUsers());
+    if(fileExists) {
+        xml.FindElem("Users");
+        xml.IntoElem();
+        while(xml.FindElem("User")) {
+            xml.IntoElem();
+            xml.FindElem("UserId");
+            if(loggedUserId==atoi(xml.GetData().c_str())) {
+                xml.FindElem("Password");
+                xml.SetData(newPassword);
+                break;
+            }
+            xml.OutOfElem();
+        }
+        xml.Save(getNameOfFielWithUsers());
+    }
 }
