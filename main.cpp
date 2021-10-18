@@ -11,6 +11,7 @@ int main() {
 
     userManager.userRegistration();
     userManager.userLogIn();
+    userManager.loggedUserPasswordChange();
 
 
 
