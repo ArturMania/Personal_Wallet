@@ -4,6 +4,10 @@ string FileWithIncomes::getNameOfFileWithIncomes() {
     return FILE_WITH_INCOMES;
 }
 
+int FileWithIncomes::getLastIncomeId() {
+    return lastIncomeId;
+}
+
 void FileWithIncomes::addIncomeToFile(Income income) {
     CMarkup xml;
     bool fileExists = xml.Load(getNameOfFileWithIncomes());
@@ -24,28 +28,32 @@ void FileWithIncomes::addIncomeToFile(Income income) {
     xml.Save(getNameOfFileWithIncomes());
 }
 
-vector<Income>FileWithIncomes::loadIncomesFromFile() {
+vector<Income>FileWithIncomes::loadIncomesFromFile(int loggedUserId) {
     CMarkup xml;
     Income income;
     vector<Income>incomes;
+    int userId=0;
     bool fileExists = xml.Load(getNameOfFileWithIncomes());
     if(fileExists) {
         xml.FindElem("Incomes");
         xml.IntoElem();
         while(xml.FindElem("Income")) {
             xml.IntoElem();
-            xml.FindElem("IncomeId");
-            income.setIncomeId(atoi(xml.GetData().c_str()));
             xml.FindElem("UserId");
-            income.setUserId(atoi(xml.GetData().c_str()));
-            xml.FindElem("IncomeDate");
-            income.setDate(atoi(xml.GetData().c_str()));
-            xml.FindElem("IncomeName");
-            income.setIncomeName(xml.GetData());
-            xml.FindElem("IncomeValue");
-            income.setIncomeValue(atof(xml.GetData().c_str()));
-            incomes.push_back(income);
-
+            userId=atoi(xml.GetData().c_str());
+            if(userId==loggedUserId) {
+                xml.FindElem("IncomeId");
+                income.setIncomeId(atoi(xml.GetData().c_str()));
+                xml.FindElem("UserId");
+                income.setUserId(atoi(xml.GetData().c_str()));
+                xml.FindElem("IncomeDate");
+                income.setDate(atoi(xml.GetData().c_str()));
+                xml.FindElem("IncomeName");
+                income.setIncomeName(xml.GetData());
+                xml.FindElem("IncomeValue");
+                income.setIncomeValue(atof(xml.GetData().c_str()));
+                incomes.push_back(income);
+            }
         }
     }
     return incomes;

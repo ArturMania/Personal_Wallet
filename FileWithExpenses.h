@@ -9,22 +9,22 @@
 
 #include "Expense.h"
 #include "AuxillaryMethodes.h"
-#include "DateUsageMethods.h"
-#include "UserManager.h"
 #include "Markup.h"
 
 using namespace std;
 
 class FileWithExpenses {
+    int lastExpenseId;
     vector<Expense>expenses;
     const string FILE_WITH_EXPENSES;
     string getNameOfFileWithExpenses();
+
 public:
     FileWithExpenses(string nameOfFileWithExpenses)
         :FILE_WITH_EXPENSES(nameOfFileWithExpenses) {
     };
     void addExpenseToFile(Expense expense);
-    vector<Expense> loadExpensesFromFile();
+    vector<Expense> loadExpensesFromFile(int loggedUserId);
     int getLastExpenseId();
 
 };

@@ -4,6 +4,11 @@ string FileWithExpenses::getNameOfFileWithExpenses() {
     return FILE_WITH_EXPENSES;
 }
 
+int FileWithExpenses::getLastExpenseId() {
+    return lastExpenseId;
+}
+
+
 void FileWithExpenses::addExpenseToFile(Expense expense) {
     CMarkup xml;
     bool fileExists = xml.Load(getNameOfFileWithExpenses());
@@ -24,28 +29,32 @@ void FileWithExpenses::addExpenseToFile(Expense expense) {
     xml.Save(getNameOfFileWithExpenses());
 }
 
-vector<Expense>FileWithExpenses::loadExpensesFromFile() {
+vector<Expense>FileWithExpenses::loadExpensesFromFile(int loggedUserId) {
     CMarkup xml;
     Expense expense;
     vector<Expense>expenses;
+    int userId=0;
     bool fileExists = xml.Load(getNameOfFileWithExpenses());
     if(fileExists) {
         xml.FindElem("Expenses");
         xml.IntoElem();
         while(xml.FindElem("Expense")) {
             xml.IntoElem();
-            xml.FindElem("ExpenseID");
-            expense.setExpenseId(atoi(xml.GetData().c_str()));
             xml.FindElem("UserId");
-            expense.setUserId(atoi(xml.GetData().c_str()));
-            xml.FindElem("ExpenseDate");
-            expense.setDate(atoi(xml.GetData().c_str()));
-            xml.FindElem("ExpenseName");
-            expense.setExpenseName(xml.GetData());
-            xml.FindElem("ExpenseValue");
-            expense.setExpenseValue(atof(xml.GetData().c_str()));
-            expenses.push_back(expense);
-
+            userId=atoi(xml.GetData().c_str());
+            if(userId==loggedUserId) {
+                xml.FindElem("ExpenseID");
+                expense.setExpenseId(atoi(xml.GetData().c_str()));
+                xml.FindElem("UserId");
+                expense.setUserId(atoi(xml.GetData().c_str()));
+                xml.FindElem("ExpenseDate");
+                expense.setDate(atoi(xml.GetData().c_str()));
+                xml.FindElem("ExpenseName");
+                expense.setExpenseName(xml.GetData());
+                xml.FindElem("ExpenseValue");
+                expense.setExpenseValue(atof(xml.GetData().c_str()));
+                expenses.push_back(expense);
+            }
         }
     }
     return expenses;

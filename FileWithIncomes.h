@@ -9,13 +9,12 @@
 
 #include "Income.h"
 #include "AuxillaryMethodes.h"
-#include "DateUsageMethods.h"
-#include "UserManager.h"
 #include "Markup.h"
 
 using namespace std;
 
 class FileWithIncomes {
+    int lastIncomeId;
     vector<Income>incomes;
     const string FILE_WITH_INCOMES;
     string getNameOfFileWithIncomes();
@@ -24,7 +23,7 @@ public:
         :FILE_WITH_INCOMES(nameOfFileWithIncomes) {
     };
     void addIncomeToFile(Income income);
-    vector<Income> loadIncomesFromFile();
+    vector<Income> loadIncomesFromFile(int loggedUserId);
     int getLastIncomeId();
 
 };
