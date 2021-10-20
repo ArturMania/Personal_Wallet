@@ -21,6 +21,7 @@ class FileWithIncomes {
 public:
     FileWithIncomes(string nameOfFileWithIncomes)
         :FILE_WITH_INCOMES(nameOfFileWithIncomes) {
+            lastIncomeId=0;
     };
     void addIncomeToFile(Income income);
     vector<Income> loadIncomesFromFile(int loggedUserId);

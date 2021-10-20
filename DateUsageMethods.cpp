@@ -1,26 +1,5 @@
 #include "DateUsageMethods.h"
 
-int DateUsageMethodes::getYear() {
-    cout<<"Podaj rok: ";
-    int year=0;
-    year=AuxillaryMethodes::loadNumber();
-    return year;
-}
-
-int DateUsageMethodes::getMonth() {
-    cout<<"Podaj miesiac: ";
-    int month=0;
-    month=AuxillaryMethodes::loadNumber();
-    return month;
-}
-
-int DateUsageMethodes::getDay() {
-    cout<<"Podaj dzien: ";
-    int day=0;
-    day=AuxillaryMethodes::loadNumber();
-    return day;
-}
-
 int DateUsageMethodes::getCurrentYear() {
     time_t now =time(&now);
     struct tm*dt =localtime(&now);
@@ -42,6 +21,44 @@ int DateUsageMethodes::getCurrentDay() {
     return currentDay;
 }
 
+int DateUsageMethodes::getFirstDayOfCurrentMonth() {
+    int year=getCurrentYear();
+    int month=getCurrentMonth();
+    string firstDay="01";
+    string firstDayOfCurrentMonth=changeYearToString(year)+changeMonthToString(month)+firstDay;
+    int firstDayOfCurrentMonthInt=changeDateToInt(firstDayOfCurrentMonth);
+    return firstDayOfCurrentMonthInt;
+}
+
+int DateUsageMethodes::getFirstDayOfPreviousMonth() {
+    string firstDay="01";
+    int year=getCurrentYear();
+    int month=getCurrentMonth();
+    if(month==1) {
+        month=12;
+        year=year-1;
+    } else
+        month--;
+    string firstDayOfPreviousMonth=changeYearToString(year)+changeMonthToString(month)+firstDay;
+    int firstDayOfPreviousMonthInt=changeDateToInt(firstDayOfPreviousMonth);
+    return firstDayOfPreviousMonthInt;
+}
+
+int DateUsageMethodes::getLastDayOfPreviousMonth() {
+    int lastDay=0;
+    int year=getCurrentYear();
+    int month=getCurrentMonth();
+    if(month==1) {
+        month=12;
+        year=year-1;
+    } else
+        month--;
+    lastDay=howManyDaysHaveMonth(month,year);
+    string lastDayOfPreviousMonth=changeYearToString(year)+changeMonthToString(month)+changeDayToString(lastDay);
+    int lastDayOfPreviousMonthInt=changeDateToInt(lastDayOfPreviousMonth);
+    return lastDayOfPreviousMonthInt;
+}
+
 int DateUsageMethodes::getCurrentDate() {
     int year=getCurrentYear();
     int month=getCurrentMonth();
@@ -50,7 +67,6 @@ int DateUsageMethodes::getCurrentDate() {
     int dateInt=changeDateToInt(date);
     return dateInt;
 }
-
 
 int DateUsageMethodes::howManyDaysHaveMonth(int month,int year) {
     int days=0;
@@ -162,7 +178,7 @@ bool DateUsageMethodes::isMonthCorrect(int month) {
 }
 
 bool DateUsageMethodes::isDayCorrect(int day) {
-    if (day<=31)
+    if ((day<=31)&&(day>=1))
         return day;
     else {
         cout<<"Wrong day input!"<<endl;
@@ -170,3 +186,18 @@ bool DateUsageMethodes::isDayCorrect(int day) {
     }
 }
 
+void DateUsageMethodes::setStartDate(int newStartDate) {
+    startDate=newStartDate;
+}
+
+void DateUsageMethodes::setEndDate(int newEndDate) {
+    endDate=newEndDate;
+}
+
+int DateUsageMethodes::getStartDate() {
+    return startDate;
+}
+
+int DateUsageMethodes::getEndDate() {
+    return endDate;
+}
