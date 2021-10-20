@@ -14,13 +14,13 @@ using namespace std;
 class IncomesManager {
     int const LOGGED_USER_ID;
     FileWithIncomes fileWithIncomes;
-    DataUsageMethodes dataUsageMethodes;
+    DateUsageMethodes dateUsageMethodes;
     vector<Income>incomes;
 
 public:
     IncomesManager(string nameOfFileWithIncomes, int loggedUserId):
         fileWithIncomes(nameOfFileWithIncomes),LOGGED_USER_ID(loggedUserId){
-        incomes=fileWithIncomes.loadIncomesFromFile(LOGGED_USER_ID)
+        incomes=fileWithIncomes.loadIncomesFromFile(LOGGED_USER_ID);
         };
     void addIncome();
     float sumOfIncomes(int startDate,int endDate);

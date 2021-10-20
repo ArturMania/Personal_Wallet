@@ -14,6 +14,13 @@ int AuxillaryMethodes::convertStringToInt(string number) {
     return numberInt;
 }
 
+string AuxillaryMethodes::convertFloatToString(float number){
+    stringstream floatToString ;
+    floatToString  << number;
+    string numberStr = floatToString .str();
+    return numberStr;
+}
+
 string AuxillaryMethodes::loadLine() {
     cin.sync();
     string input = "";
@@ -35,3 +42,11 @@ int AuxillaryMethodes::loadNumber() {
     return number;
 }
 
+string AuxillaryMethodes::replaceCommaWithDot ( string numberAsString ) {
+
+    for ( int i = 0; i < numberAsString.size(); i++ ) {
+        if( numberAsString[i] == 44 )
+            numberAsString[i] = 46;
+    }
+    return numberAsString;
+}

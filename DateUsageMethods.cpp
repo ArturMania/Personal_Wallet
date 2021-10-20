@@ -42,6 +42,16 @@ int DateUsageMethodes::getCurrentDay() {
     return currentDay;
 }
 
+int DateUsageMethodes::getCurrentDate() {
+    int year=getCurrentYear();
+    int month=getCurrentMonth();
+    int day=getCurrentDay();
+    string date=changeDateToString(year,month,day);
+    int dateInt=changeDateToInt(date);
+    return dateInt;
+}
+
+
 int DateUsageMethodes::howManyDaysHaveMonth(int month,int year) {
     int days=0;
     if((month==4)||(month==6)||(month==9)||(month==11)) {
@@ -94,6 +104,16 @@ string DateUsageMethodes::changeDateWithDashesToString(string dateDashedString) 
     date=yearStr+monthStr+dayStr;
     return date;
 }
+
+string DateUsageMethodes::changeIntDateToDateWithDashes(int dateInt) {
+    string dateString=AuxillaryMethodes::convertIntToString(dateInt);
+    string yearStr=dateString.substr(0,4);
+    string monthStr=dateString.substr(4,2);
+    string dayStr=dateString.substr(6,2);
+    string dateWithDashes=yearStr+"-"+monthStr+"-"+dayStr;
+    return dateWithDashes;
+}
+
 string DateUsageMethodes::changeDateToString(int year,int month,int day) {
     string dateAsString="";
     string yearAsString=changeYearToString(year);

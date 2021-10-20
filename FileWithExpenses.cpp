@@ -24,9 +24,10 @@ void FileWithExpenses::addExpenseToFile(Expense expense) {
     xml.AddElem("UserId",expense.getUserId());
     xml.AddElem("ExpenseDate",expense.getDate());
     xml.AddElem("ExpenseName",expense.getExpenseName());
-    xml.AddElem("ExpenseValue",expense.getExpenseValue());
+    xml.AddElem("ExpenseValue",AuxillaryMethodes::convertFloatToString(expense.getExpenseValue()));
 
     xml.Save(getNameOfFileWithExpenses());
+    lastExpenseId++;
 }
 
 vector<Expense>FileWithExpenses::loadExpensesFromFile(int loggedUserId) {
@@ -55,6 +56,7 @@ vector<Expense>FileWithExpenses::loadExpensesFromFile(int loggedUserId) {
                 expense.setExpenseValue(atof(xml.GetData().c_str()));
                 expenses.push_back(expense);
             }
+            lastExpenseId++;
         }
     }
     return expenses;

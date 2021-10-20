@@ -7,4 +7,11 @@
 <Name>Artur</Name>
 <Surname>Mania</Surname>
 </User>
+<User>
+<UserId>2</UserId>
+<Login>Bobek</Login>
+<Password>123</Password>
+<Name>Bobo</Name>
+<Surname>Dobo</Surname>
+</User>
 </Users>

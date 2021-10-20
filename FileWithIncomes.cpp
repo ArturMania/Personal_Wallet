@@ -23,9 +23,10 @@ void FileWithIncomes::addIncomeToFile(Income income) {
     xml.AddElem("UserId",income.getUserId());
     xml.AddElem("IncomeDate",income.getDate());
     xml.AddElem("IncomeName",income.getIncomeName());
-    xml.AddElem("IncomeValue",income.getIncomeValue());
+    xml.AddElem("IncomeValue",AuxillaryMethodes::convertFloatToString(income.getIncomeValue()));
 
     xml.Save(getNameOfFileWithIncomes());
+    lastIncomeId++;
 }
 
 vector<Income>FileWithIncomes::loadIncomesFromFile(int loggedUserId) {
@@ -53,8 +54,12 @@ vector<Income>FileWithIncomes::loadIncomesFromFile(int loggedUserId) {
                 xml.FindElem("IncomeValue");
                 income.setIncomeValue(atof(xml.GetData().c_str()));
                 incomes.push_back(income);
+
             }
+            xml.OutOfElem();
+            lastIncomeId++;
         }
     }
     return incomes;
 }
+
