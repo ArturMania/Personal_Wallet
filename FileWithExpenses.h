@@ -22,6 +22,7 @@ class FileWithExpenses {
 public:
     FileWithExpenses(string nameOfFileWithExpenses)
         :FILE_WITH_EXPENSES(nameOfFileWithExpenses) {
+            lastExpenseId=0;
     };
     void addExpenseToFile(Expense expense);
     vector<Expense> loadExpensesFromFile(int loggedUserId);

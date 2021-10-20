@@ -11,30 +11,39 @@
 using namespace std;
 
 class DateUsageMethodes{
+    int startDate;
+    int endDate;
 
-public:
-    int getYear();
-    int getMonth();
-    int getDay();
-    int getCurrentDay();
-    int getCurrentMonth();
-    int getCurrentYear();
-    int getCurrentDate();
     int howManyDaysHaveMonth(int month,int year);
     string changeYearToString(int year);
     string changeMonthToString(int month);
     string changeDayToString(int day);
     string changeDateToString(int year,int month,int day);
-    string changeDateWithDashesToString(string dateDashedString);
-    string changeIntDateToDateWithDashes(int dateInt);
-    int changeDateToInt(string date);
+
+
     bool checkEarlierDate(int fisrtDate,int secondDate);
     bool isItLeapYear(int year);
     bool isYearCorrect(int year);
     bool isMonthCorrect(int month);
     bool isDayCorrect(int day);
 
-};
+public:
 
+    int changeDateToInt(string date);
+    string changeDateWithDashesToString(string dateDashedString);
+    string changeIntDateToDateWithDashes(int dateInt);
+    int getCurrentDay();
+    int getCurrentMonth();
+    int getCurrentYear();
+    int getCurrentDate();
+    int getFirstDayOfCurrentMonth();
+    int getFirstDayOfPreviousMonth();
+    int getLastDayOfPreviousMonth();
+    void setStartDate(int newStartDate);
+    void setEndDate(int newEndDate);
+    int getStartDate();
+    int getEndDate();
+
+};
 
 #endif
