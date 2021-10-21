@@ -63,3 +63,4 @@ vector<Income>FileWithIncomes::loadIncomesFromFile(int loggedUserId) {
     return incomes;
 }
 
+//FW

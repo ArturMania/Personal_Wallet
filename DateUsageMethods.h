@@ -25,7 +25,8 @@ class DateUsageMethodes{
     bool isItLeapYear(int year);
     bool isYearCorrect(int year);
     bool isMonthCorrect(int month);
-    bool isDayCorrect(int day);
+    bool isDayCorrect(int day,int month,int year);
+
 
 public:
 
@@ -43,7 +44,10 @@ public:
     void setEndDate(int newEndDate);
     int getStartDate();
     int getEndDate();
+    bool isDateCorrect(string dateDashedString);
 
 };
 
 #endif
+
+//FW

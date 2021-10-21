@@ -14,11 +14,4 @@
 <Name>b</Name>
 <Surname>b</Surname>
 </User>
-<User>
-<UserId>3</UserId>
-<Login>c</Login>
-<Password>123</Password>
-<Name>c</Name>
-<Surname>c</Surname>
-</User>
 </Users>

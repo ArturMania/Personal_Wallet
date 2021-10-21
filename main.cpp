@@ -32,7 +32,7 @@ int main() {
         } else if (yourWallet.getLoggedUserID()>0) {
             system("cls");
             loggedUserId=yourWallet.getLoggedUserID();
-            cout <<"=================Main Menu================="<<endl;
+            cout << "================Main Menu================="<<endl;
             cout << "1. Add Income" << endl;
             cout << "2. Add Expense" << endl;
             cout << "3. Balance sheet from current month" << endl;
@@ -125,7 +125,7 @@ int main() {
 
 
 
-/* TESTY
+/* TESTY FW
 
 #include "DateUsageMethods.h"
 #include "UserManager.h"

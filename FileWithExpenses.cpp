@@ -62,3 +62,5 @@ vector<Expense>FileWithExpenses::loadExpensesFromFile(int loggedUserId) {
     }
     return expenses;
 }
+
+//FW

@@ -106,17 +106,13 @@ string DateUsageMethodes::changeDateWithDashesToString(string dateDashedString) 
     string year="",month="",day="",date="";
     year=dateDashedString.substr(0,4);
     int yearInt=AuxillaryMethodes::convertStringToInt(year);
-    isYearCorrect(yearInt);
     month=dateDashedString.substr(5,2);
     int monthInt=AuxillaryMethodes::convertStringToInt(month);
-    isMonthCorrect(monthInt);
     day=dateDashedString.substr(8,2);
     int dayInt=AuxillaryMethodes::convertStringToInt(day);
-    isDayCorrect(dayInt);
     string yearStr=changeYearToString(yearInt);
     string monthStr=changeMonthToString(monthInt);
     string dayStr=changeDayToString(dayInt);
-
     date=yearStr+monthStr+dayStr;
     return date;
 }
@@ -177,14 +173,47 @@ bool DateUsageMethodes::isMonthCorrect(int month) {
     }
 }
 
-bool DateUsageMethodes::isDayCorrect(int day) {
-    if ((day<=31)&&(day>=1))
-        return day;
-    else {
-        cout<<"Wrong day input!"<<endl;
-        return 0;
+bool DateUsageMethodes::isDayCorrect(int day,int month,int year) {
+    if((month==4)||(month==6)||(month==9)||(month==11)) {
+        if(day>30) {
+            cout<<"Wrong day input!"<<endl;
+            return false;
+        }
+    } else if(month==2) {
+        if(isItLeapYear(year)==true) {
+            if(day>29) {
+                cout<<"Wrong day input!"<<endl;
+                return false;
+            }
+        } else {
+            if(day>28) {
+                cout<<"Wrong day input!"<<endl;
+                return false;
+            }
+        }
+    } else {
+        if(day>31) {
+            cout<<"Wrong day input!"<<endl;
+            return false;
+        }
     }
+    return true;
 }
+
+bool DateUsageMethodes::isDateCorrect(string dateDashedString) {
+    string year="",month="",day="",date="";
+    year=dateDashedString.substr(0,4);
+    int yearInt=AuxillaryMethodes::convertStringToInt(year);
+    month=dateDashedString.substr(5,2);
+    int monthInt=AuxillaryMethodes::convertStringToInt(month);
+    day=dateDashedString.substr(8,2);
+    int dayInt=AuxillaryMethodes::convertStringToInt(day);
+    if((isYearCorrect(yearInt)==true)&&(isMonthCorrect(monthInt)==true)&&(isDayCorrect(dayInt,monthInt,yearInt)==true)) {
+        return true;
+    } else
+        return false;
+}
+
 
 void DateUsageMethodes::setStartDate(int newStartDate) {
     startDate=newStartDate;
@@ -201,3 +230,5 @@ int DateUsageMethodes::getStartDate() {
 int DateUsageMethodes::getEndDate() {
     return endDate;
 }
+
+//FW

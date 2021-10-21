@@ -71,3 +71,5 @@ void FileWithUsers::passwordChange(int loggedUserId, string newPassword) {
         xml.Save(getNameOfFielWithUsers());
     }
 }
+
+//FW

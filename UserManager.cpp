@@ -96,3 +96,5 @@ bool UserManager::isUserLoggedIn() {
     else
         return false;
 }
+
+//FW

@@ -22,10 +22,12 @@ public:
         fileWithExpenses(nameOfFileWithExpenses),LOGGED_USER_ID(loggedUserId){
         expenses=fileWithExpenses.loadExpensesFromFile(LOGGED_USER_ID);
         };
-    void addExpense();
+    //void addExpense();
     float sumOfExpenses(int startDate,int endDate);
     void dispalyExpenses(int startDate, int endDate);
-    Expense addNewExpense();
+    void addNewExpense();
 
 };
 #endif
+
+//FW

@@ -22,10 +22,12 @@ public:
         fileWithIncomes(nameOfFileWithIncomes),LOGGED_USER_ID(loggedUserId){
         incomes=fileWithIncomes.loadIncomesFromFile(LOGGED_USER_ID);
         };
-    void addIncome();
+    //void addIncome();
     float sumOfIncomes(int startDate,int endDate);
     void dispalyIncomes(int startDate, int endDate);
-    Income addNewIncome();
+    void addNewIncome();
 
 };
 #endif
+
+//FW

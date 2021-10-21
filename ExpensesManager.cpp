@@ -1,6 +1,7 @@
 #include "ExpensesManager.h"
 
-Expense ExpensesManager::addNewExpense() {
+void ExpensesManager::addNewExpense() {
+    system ("cls");
     Expense expense;
     string expenseValue;
     string dateInput;
@@ -17,27 +18,35 @@ Expense ExpensesManager::addNewExpense() {
     numberValue=atof(expenseValue.c_str());
     expense.setExpenseValue(numberValue);
     cout<<"_____________Choose date of income_____________"<<endl;
-    cout<<"Press 't' if today or 'any key' to enter date: "<<endl;
+    cout<<"Press 't' if today or 'd' to enter date: "<<endl;
     selection=AuxillaryMethodes::loadChar();
     if(selection=='t') {
         expense.setDate(dateUsageMethodes.getCurrentDate());
+        expenses.push_back(expense);
+        fileWithExpenses.addExpenseToFile(expense);
     } else {
         cout<<"Type date in yyyy-mm-dd format: "<<endl;
         dateInput=AuxillaryMethodes::loadLine();
-        dateInput=dateUsageMethodes.changeDateWithDashesToString(dateInput);
-        expense.setDate(dateUsageMethodes.changeDateToInt(dateInput));
+        if(dateUsageMethodes.isDateCorrect(dateInput)==true) {
+            dateInput=dateUsageMethodes.changeDateWithDashesToString(dateInput);
+            expense.setDate(dateUsageMethodes.changeDateToInt(dateInput));
+            expenses.push_back(expense);
+            fileWithExpenses.addExpenseToFile(expense);
+        } else {
+            system("pause");
+            return ;
+        }
     }
-    return expense;
 }
 
-void ExpensesManager::addExpense() {
+/*void ExpensesManager::addExpense() {
     system ("cls");
     Expense expense;
     expense=addNewExpense();
     expenses.push_back(expense);
     fileWithExpenses.addExpenseToFile(expense);
     system("pause");
-}
+}*/
 
 float ExpensesManager::sumOfExpenses(int startDate, int endDate) {
     float expenseSum=0;
@@ -68,3 +77,5 @@ void ExpensesManager::dispalyExpenses(int startDate, int endDate) {
     }
     selectedExpenses.clear();
 }
+
+//FW

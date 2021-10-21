@@ -20,3 +20,5 @@ public:
    static string replaceCommaWithDot(string numberAsString);
 };
 #endif
+
+//FW

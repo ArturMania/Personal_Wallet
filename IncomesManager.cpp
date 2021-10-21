@@ -1,6 +1,7 @@
 #include "IncomesManager.h"
 
-Income IncomesManager::addNewIncome() {
+void IncomesManager::addNewIncome() {
+    system ("cls");
     Income income;
     string incomeValue;
     string dateInput;
@@ -17,27 +18,35 @@ Income IncomesManager::addNewIncome() {
     numberValue=atof(incomeValue.c_str());
     income.setIncomeValue(numberValue);
     cout<<"_____________Choose date of income_____________"<<endl;
-    cout<<"Press 't' if today or 'any key' to enter date: "<<endl;
+    cout<<"Press 't' if today or 'd' to enter date: "<<endl;
     selection=AuxillaryMethodes::loadChar();
     if(selection=='t') {
         income.setDate(dateUsageMethodes.getCurrentDate());
+        incomes.push_back(income);
+        fileWithIncomes.addIncomeToFile(income);
     } else {
         cout<<"Type date in yyyy-mm-dd format: "<<endl;
         dateInput=AuxillaryMethodes::loadLine();
-        dateInput=dateUsageMethodes.changeDateWithDashesToString(dateInput);
-        income.setDate(dateUsageMethodes.changeDateToInt(dateInput));
+        if(dateUsageMethodes.isDateCorrect(dateInput)==true) {
+            dateInput=dateUsageMethodes.changeDateWithDashesToString(dateInput);
+            income.setDate(dateUsageMethodes.changeDateToInt(dateInput));
+            incomes.push_back(income);
+            fileWithIncomes.addIncomeToFile(income);
+        } else {
+            system("pause");
+            return ;
+        }
     }
-    return income;
 }
 
-void IncomesManager::addIncome() {
+/*void IncomesManager::addIncome() {
     system ("cls");
     Income income;
     income=addNewIncome();
     incomes.push_back(income);
     fileWithIncomes.addIncomeToFile(income);
     system("pause");
-}
+}*/
 
 float IncomesManager::sumOfIncomes(int startDate, int endDate) {
     float incomeSum=0;
@@ -68,3 +77,5 @@ void IncomesManager::dispalyIncomes(int startDate, int endDate) {
     }
     selectedIncomes.clear();
 }
+
+//FW

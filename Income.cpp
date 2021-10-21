@@ -36,3 +36,5 @@ string Income::getIncomeName() {
 float Income::getIncomeValue() {
     return incomeValue;
 }
+
+//FW

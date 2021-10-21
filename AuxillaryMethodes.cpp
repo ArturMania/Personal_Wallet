@@ -50,3 +50,5 @@ string AuxillaryMethodes::replaceCommaWithDot ( string numberAsString ) {
     }
     return numberAsString;
 }
+
+//FW

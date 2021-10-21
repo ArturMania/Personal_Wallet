@@ -33,12 +33,12 @@ void YourWallet::passwordChange() {
 
 void YourWallet::addIncome() {
     if(userManager.getIdOfLoggedInUser()>0)
-        incomeManager -> addIncome();
+        incomeManager -> addNewIncome();
 }
 
 void YourWallet::addExpense() {
     if(userManager.getIdOfLoggedInUser()>0)
-        expenseManager->addExpense();
+        expenseManager->addNewExpense();
 }
 
 void YourWallet::displayBalanceOfCurrentMonth() {
@@ -94,3 +94,4 @@ void YourWallet::displayBalanceOfSelectedPeriod() {
 
 }
 
+//FW
