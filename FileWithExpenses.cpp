@@ -56,6 +56,7 @@ vector<Expense>FileWithExpenses::loadExpensesFromFile(int loggedUserId) {
                 expense.setExpenseValue(atof(xml.GetData().c_str()));
                 expenses.push_back(expense);
             }
+            xml.OutOfElem();
             lastExpenseId++;
         }
     }
