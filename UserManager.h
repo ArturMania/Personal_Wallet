@@ -34,6 +34,5 @@ public:
     void loggedUserPasswordChange();
     bool isUserLoggedIn();
 
-    User getUserData();
 };
 #endif

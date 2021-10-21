@@ -45,7 +45,9 @@ int UserManager::userLogIn() {
     system("cls");
     cout <<"Login: ";
     login = AuxillaryMethodes::loadLine();
+
     for(int i=0; i<users.size(); i++) {
+
         if (users[i].getLogin() == login) {
 
             cout << "Password: ";
@@ -61,12 +63,12 @@ int UserManager::userLogIn() {
                 system ("pause");
                 return 0;
             }
-        } else {
-            cout << "There is no such login/account!" << endl << endl;
-            system("pause");
-            return 0;
         }
     }
+    cout << "There is no such login/account!" << endl << endl;
+    system("pause");
+    return 0;
+
 }
 
 void UserManager::loggedUserPasswordChange() {

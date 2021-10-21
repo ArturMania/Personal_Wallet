@@ -33,6 +33,7 @@ vector<User>FileWithUsers::loadUsersFromFile() {
         xml.FindElem("Users");
         xml.IntoElem();
         while(xml.FindElem("User")) {
+
             xml.IntoElem();
             xml.FindElem("UserId");
             user.setId(atoi(xml.GetData().c_str()));
@@ -44,8 +45,8 @@ vector<User>FileWithUsers::loadUsersFromFile() {
             user.setName(xml.GetData());
             xml.FindElem("Surname");
             user.setSurname(xml.GetData());
+            xml.OutOfElem();
             users.push_back(user);
-
         }
     }
     return users;

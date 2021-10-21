@@ -11,6 +11,10 @@ void YourWallet::userRegistration() {
 
 void YourWallet::userLogin() {
     userManager.userLogIn();
+    if(userManager.getIdOfLoggedInUser()>0){
+        incomeManager = new IncomesManager(FILE_WITH_INCOMES,userManager.getIdOfLoggedInUser());
+        expenseManager = new ExpensesManager(FILE_WITH_EXPENSES,userManager.getIdOfLoggedInUser());
+    }
 }
 
 void YourWallet::userLogout() {
@@ -29,7 +33,7 @@ void YourWallet::passwordChange() {
 
 void YourWallet::addIncome() {
     if(userManager.getIdOfLoggedInUser()>0)
-        incomeManager->addIncome();
+        incomeManager -> addIncome();
 }
 
 void YourWallet::addExpense() {
@@ -38,6 +42,7 @@ void YourWallet::addExpense() {
 }
 
 void YourWallet::displayBalanceOfCurrentMonth() {
+    system("cls");
     int startDate=dateUsageMethodes.getFirstDayOfCurrentMonth();
     int endDate=dateUsageMethodes.getCurrentDate();
     float incomeSum = incomeManager->sumOfIncomes(startDate,endDate);
@@ -53,6 +58,7 @@ void YourWallet::displayBalanceOfCurrentMonth() {
 }
 
 void YourWallet::displayBalancePreviousMonth() {
+    system("cls");
     int startDate=dateUsageMethodes.getLastDayOfPreviousMonth();
     int endDate=dateUsageMethodes.getFirstDayOfPreviousMonth();
     float incomeSum = incomeManager->sumOfIncomes(startDate,endDate);
@@ -87,3 +93,4 @@ void YourWallet::displayBalanceOfSelectedPeriod() {
     system("pause");
 
 }
+

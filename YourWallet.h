@@ -10,24 +10,27 @@
 
 
 class YourWallet {
+
     DateUsageMethodes dateUsageMethodes;
     UserManager userManager;
     IncomesManager *incomeManager;
     ExpensesManager *expenseManager;
+
     const string FILE_WITH_INCOMES;
     const string FILE_WITH_EXPENSES;
+
 public:
-    YourWallet(string fileWithUsers,string fileWithIncomesName, string fileWithExpensesName):
-        userManager(fileWithUsers),FILE_WITH_INCOMES(fileWithIncomesName),FILE_WITH_EXPENSES(fileWithExpensesName) {
+    YourWallet(string fileWithUsers,string fileWithIncomesName, string fileWithExpensesName)
+    :   userManager(fileWithUsers),FILE_WITH_INCOMES(fileWithIncomesName),FILE_WITH_EXPENSES(fileWithExpensesName) {
         incomeManager=NULL;
         expenseManager=NULL;
-    };
+    }
     ~YourWallet(){
         delete incomeManager;
         incomeManager=NULL;
         delete expenseManager;
         expenseManager=NULL;
-    };
+    }
 
     int getLoggedUserID();
     void userRegistration();
