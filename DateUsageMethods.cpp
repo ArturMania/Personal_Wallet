@@ -160,6 +160,8 @@ bool DateUsageMethodes::isYearCorrect(int year) {
         return year;
     else {
         cout<<"Wrong year input!"<<endl;
+        system("pause");
+        system ("cls");
         return 0;
     }
 }
@@ -169,6 +171,8 @@ bool DateUsageMethodes::isMonthCorrect(int month) {
         return month;
     else {
         cout<<"Wrong month input!"<<endl;
+        system("pause");
+        system ("cls");
         return 0;
     }
 }
@@ -177,23 +181,31 @@ bool DateUsageMethodes::isDayCorrect(int day,int month,int year) {
     if((month==4)||(month==6)||(month==9)||(month==11)) {
         if(day>30) {
             cout<<"Wrong day input!"<<endl;
+            system("pause");
+            system ("cls");
             return false;
         }
     } else if(month==2) {
         if(isItLeapYear(year)==true) {
             if(day>29) {
                 cout<<"Wrong day input!"<<endl;
+                system("pause");
+                system ("cls");
                 return false;
             }
         } else {
             if(day>28) {
                 cout<<"Wrong day input!"<<endl;
+                system("pause");
+                system ("cls");
                 return false;
             }
         }
     } else {
         if(day>31) {
             cout<<"Wrong day input!"<<endl;
+            system("pause");
+            system ("cls");
             return false;
         }
     }

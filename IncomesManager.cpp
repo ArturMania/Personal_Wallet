@@ -25,19 +25,25 @@ void IncomesManager::addNewIncome() {
         incomes.push_back(income);
         fileWithIncomes.addIncomeToFile(income);
     } else {
-        cout<<"Type date in yyyy-mm-dd format: "<<endl;
-        dateInput=AuxillaryMethodes::loadLine();
-        if(dateUsageMethodes.isDateCorrect(dateInput)==true) {
-            dateInput=dateUsageMethodes.changeDateWithDashesToString(dateInput);
-            income.setDate(dateUsageMethodes.changeDateToInt(dateInput));
-            incomes.push_back(income);
-            fileWithIncomes.addIncomeToFile(income);
-        } else {
-            system("pause");
-            return ;
+        for(int i=10; i>0; i--) {
+            cout<<"Type date in yyyy-mm-dd format: "<<endl;
+            dateInput=AuxillaryMethodes::loadLine();
+
+            if(dateUsageMethodes.isDateCorrect(dateInput)==true) {
+
+                dateInput=dateUsageMethodes.changeDateWithDashesToString(dateInput);
+                income.setDate(dateUsageMethodes.changeDateToInt(dateInput));
+                incomes.push_back(income);
+                fileWithIncomes.addIncomeToFile(income);
+                cout<<"Income added"<<endl;
+                system("pause");
+                break;
+            }
         }
+        return;
     }
 }
+
 
 /*void IncomesManager::addIncome() {
     system ("cls");

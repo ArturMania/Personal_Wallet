@@ -25,19 +25,25 @@ void ExpensesManager::addNewExpense() {
         expenses.push_back(expense);
         fileWithExpenses.addExpenseToFile(expense);
     } else {
-        cout<<"Type date in yyyy-mm-dd format: "<<endl;
-        dateInput=AuxillaryMethodes::loadLine();
-        if(dateUsageMethodes.isDateCorrect(dateInput)==true) {
-            dateInput=dateUsageMethodes.changeDateWithDashesToString(dateInput);
-            expense.setDate(dateUsageMethodes.changeDateToInt(dateInput));
-            expenses.push_back(expense);
-            fileWithExpenses.addExpenseToFile(expense);
-        } else {
-            system("pause");
-            return ;
+        for(int i=10; i>0; i--) {
+            cout<<"Type date in yyyy-mm-dd format: "<<endl;
+            dateInput=AuxillaryMethodes::loadLine();
+
+            if(dateUsageMethodes.isDateCorrect(dateInput)==true) {
+
+                dateInput=dateUsageMethodes.changeDateWithDashesToString(dateInput);
+                expense.setDate(dateUsageMethodes.changeDateToInt(dateInput));
+                expenses.push_back(expense);
+                fileWithExpenses.addExpenseToFile(expense);
+                cout<<"Expense added"<<endl;
+                system("pause");
+                break;
+            }
         }
+        return;
     }
 }
+
 
 /*void ExpensesManager::addExpense() {
     system ("cls");
