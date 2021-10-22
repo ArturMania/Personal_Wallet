@@ -25,7 +25,7 @@ void IncomesManager::addNewIncome() {
         incomes.push_back(income);
         fileWithIncomes.addIncomeToFile(income);
     } else {
-        for(int i=10; i>0; i--) {
+        while(true) {
             cout<<"Type date in yyyy-mm-dd format: "<<endl;
             dateInput=AuxillaryMethodes::loadLine();
 

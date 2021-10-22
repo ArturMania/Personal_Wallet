@@ -25,7 +25,7 @@ void ExpensesManager::addNewExpense() {
         expenses.push_back(expense);
         fileWithExpenses.addExpenseToFile(expense);
     } else {
-        for(int i=10; i>0; i--) {
+       while(true) {
             cout<<"Type date in yyyy-mm-dd format: "<<endl;
             dateInput=AuxillaryMethodes::loadLine();
 
