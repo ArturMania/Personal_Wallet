@@ -56,4 +56,11 @@
 <ExpenseName>a-4</ExpenseName>
 <ExpenseValue>200</ExpenseValue>
 </Expense>
+<Expense>
+<ExpenseID>9</ExpenseID>
+<UserId>1</UserId>
+<ExpenseDate>20210912</ExpenseDate>
+<ExpenseName>a-6</ExpenseName>
+<ExpenseValue>500</ExpenseValue>
+</Expense>
 </Expenses>

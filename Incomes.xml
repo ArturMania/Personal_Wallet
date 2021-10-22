@@ -28,4 +28,11 @@
 <IncomeName>b2</IncomeName>
 <IncomeValue>345.67</IncomeValue>
 </Income>
+<Income>
+<IncomeId>5</IncomeId>
+<UserId>1</UserId>
+<IncomeDate>20210920</IncomeDate>
+<IncomeName>a6</IncomeName>
+<IncomeValue>600</IncomeValue>
+</Income>
 </Incomes>

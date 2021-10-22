@@ -59,8 +59,8 @@ void YourWallet::displayBalanceOfCurrentMonth() {
 
 void YourWallet::displayBalancePreviousMonth() {
     system("cls");
-    int startDate=dateUsageMethodes.getLastDayOfPreviousMonth();
-    int endDate=dateUsageMethodes.getFirstDayOfPreviousMonth();
+    int startDate=dateUsageMethodes.getFirstDayOfPreviousMonth();
+    int endDate=dateUsageMethodes.getLastDayOfPreviousMonth();
     float incomeSum = incomeManager->sumOfIncomes(startDate,endDate);
     float expenseSum = expenseManager->sumOfExpenses(startDate,endDate);
     cout<<"==============INCOMES=============="<<endl;
